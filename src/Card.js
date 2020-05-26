@@ -6,7 +6,7 @@ function Card({ name, email, id }) {
             <img src={`https://robohash.org/${id}?size=250x250`} alt="card" />
             <>
                 <h2>{name}</h2>
-                <p>{email}</p>
+                <p>{email.toLowerCase()}</p>
             </>
         </div>
     );

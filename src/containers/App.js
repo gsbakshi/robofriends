@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import CardList from '../containers/CardList';
-import SearchBox from '../containers/SearchBox';
-import Scroll from '../containers/Scroll'
+import CardList from '../components/CardList';
+import SearchBox from '../components/SearchBox';
+import Scroll from '../components/Scroll';
+import ErrorBoundary from '../components/ErrorBoundary';
 import './App.css'
 
 class App extends Component {
     constructor() {
-    super()
-    this.state = {
-        robots: [],
-        searchfield: ''
+        super();
+        this.state = {
+            robots: [],
+            searchfield: ''
         }
     }
 
@@ -36,7 +37,9 @@ class App extends Component {
                 <h1 className='f-6'>RoboFriends</h1>
                 <SearchBox searchChange={this.onSearchChange} />
                 <Scroll>
-                    <CardList robots={ filteredRobots } />          
+                    <ErrorBoundary>
+                        <CardList robots={ filteredRobots } />          
+                    </ErrorBoundary>
                 </Scroll>
             </div>
     }
